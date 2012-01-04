@@ -1,0 +1,36 @@
+ServerLoad ----->>
+
+    This is a small application which shows all Servers "Load" and uptime in the browser. It involves two 
+    scripts. First is running ssh and gathering the information from servers and writing it in a file.
+    Second Script reads the information copied and displays it in browser.
+
+**Note -- For making SSH connection it reads ~/.ssh/config so it should be there. copy your id_rsa.pub to 
+ 	servers for secure and password less login.
+
+
+Pre requisites :-
+
+     Ruby
+     Ruby-gem
+     Sinatra
+      
+      
+Installation :-
+
+     ## Now follow these simple steps --
+     
+      $ mkdir ~/Projects/git-social/
+      $ git clone git://github.com/abhishektomar/Server-Load.git
+      $ cd Server-Load 
+     
+     ## Cron Entry (This will gathered required information from servers every min) --
+      * * * * * /usr/bin/ruby ~/Projects/Server-Load/uptime.rb  
+      
+      ## Afterwards, Run the following --
+      $ ruby webapp.rb &
+
+
+
+Open http://localhost:4567 in your browser.
+
+
