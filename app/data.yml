@@ -1,0 +1,2 @@
+:outputfile: "~/Server-Load/app/output"
+:sshconf: "~/.ssh/config"

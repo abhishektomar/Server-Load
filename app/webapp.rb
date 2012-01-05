@@ -1,13 +1,14 @@
 require 'rubygems'
 require 'sinatra'
 require 'pp'
+require 'common'
 
 get '/' do
         data = []
         rejected = []
         output = "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"60\">"
         sort_by = params[:sort_by] || 'la1'
-        ofile = File.expand_path("~/Projects/git-social/Server-Load/output")
+        ofile = File.expand_path(Common::config[:outputfile])
         file = open(ofile).read.split("\n")
         output +="<table border=1><tr><th><a href=\"?sort_by=srvname\">Server Name</a></th><th><a href=\"?sort_by=uptime\">Uptime</a></th><th><a href=\"?sort_by=usrlogin\">Logged In User</a></th><th><a href=\"?sort_by=la1\">LA1</a></th><th><a href=\"?sort_by=la2\">LA2</a></th><th><a href=\"?sort_by=la3\">LA3</a></th></tr>"
         file.each do |line|

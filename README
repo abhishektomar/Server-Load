@@ -4,8 +4,13 @@ ServerLoad ----->>
     scripts. First is running ssh and gathering the information from servers and writing it in a file.
     Second Script reads the information copied and displays it in browser.
 
-**Note -- For making SSH connection it reads ~/.ssh/config so it should be there. copy your id_rsa.pub to 
+**Note -- By default, For making SSH connection it reads ~/.ssh/config file. Copy your id_rsa.pub to 
  	servers for secure and password less login.
+
+	You can use different path for the application by changing in "config.yaml" file.
+	e.g.
+	:outputfile: <Path to the outputfile>
+	:sshconf: <Path to the ssh conf file>
 
 
 Pre requisites :-
@@ -19,18 +24,14 @@ Installation :-
 
      ## Now follow these simple steps --
      
-      $ mkdir ~/Projects/git-social/
       $ git clone git://github.com/abhishektomar/Server-Load.git
-      $ cd Server-Load 
-     
+      $ cd Server-Load/app 
+	
+     Before running this application we will add one cron entry-
      ## Cron Entry (This will gathered required information from servers every min) --
-      * * * * * /usr/bin/ruby ~/Projects/Server-Load/uptime.rb  
+      * * * * * /usr/bin/ruby <PATH TO uptime.rb>
       
       ## Afterwards, Run the following --
       $ ruby webapp.rb &
 
-
-
 Open http://localhost:4567 in your browser.
-
-

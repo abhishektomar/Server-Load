@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 require 'pp'
+require 'common'
 
 def servers
   hosts     = []
-  file      = File.expand_path("~/.ssh/config")
+  file      = File.expand_path(Common::config[:sshconf])
   open(file) do |config|
     config.read.split("\n").each do |line|
       match = /^Host\s(\w+.*)/i.match(line)
@@ -13,9 +14,8 @@ def servers
   hosts
 end
 
-ofile = File.expand_path("~/Projects/git-social/Server-Load/output")
+ofile = File.expand_path(Common::config[:outputfile])
 open(ofile, 'w') do | file |
-
 threads = []
 servers.each do | s |
  threads << Thread.new do
@@ -27,5 +27,5 @@ end
 
 threads.each do | t |
  t.join
-end 
+end
 end
